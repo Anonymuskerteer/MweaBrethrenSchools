@@ -432,7 +432,7 @@
 
 
 
-    let currentIndex = 0;
+let currentIndex = 0;
 const slides = document.querySelectorAll('.carousel-item');
 const totalSlides = slides.length;
 
@@ -446,9 +446,8 @@ function showSlide(index) {
         carouselInner.style.transform = `translateX(${offset}%)`;
         setTimeout(() => {
             carouselInner.style.transition = 'transform 0.5s ease';
-            currentIndex++;
-            showSlide(currentIndex);
-        }, 20);
+            nextSlide(); // Move to the next slide after resetting
+        }, 50);
     } else {
         currentIndex = index;
         const offset = -currentIndex * 100;
@@ -468,6 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentIndex);
     setInterval(nextSlide, 5000);
 });
+
 
 
 
