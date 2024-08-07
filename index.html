@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE-Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,16 +20,6 @@
 </script>
     </head>
     <body>
-            <!-- <div class="heading-menu">
-                <div>
-                <ul class="info">
-                    <li><a href="#home" style="text-decoration: none; color: white">Home</a></li>
-                    <li><a href="#cbcc" style="text-decoration: none; color: white">Services</a></li>
-                    <li><a href="#about" style="text-decoration: none; color: white;">About Us</a></li>
-                    <li><a href="#site"style="text-decoration: none; color: white">Take A look</a></li>
-                    <li><a href="#contact-us" style="text-decoration: none; color: white">Contact Us</a></li>
-                </ul>
-            </div> -->
             <div id="home">
                     <div class="intro">
                         <div class="container">
@@ -429,47 +419,40 @@
                     });
             });
 
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.carousel-item');
+    const totalSlides = slides.length;
 
-
-
-let currentIndex = 0;
-const slides = document.querySelectorAll('.carousel-item');
-const totalSlides = slides.length;
-
-function showSlide(index) {
-    const carouselInner = document.querySelector('.carousel-inner');
-    if (index >= totalSlides) {
-        // Reset to start of the slides smoothly
-        carouselInner.style.transition = 'none';
-        currentIndex = 0;
-        const offset = -currentIndex * 100;
-        carouselInner.style.transform = `translateX(${offset}%)`;
-        setTimeout(() => {
-            carouselInner.style.transition = 'transform 0.5s ease';
-            nextSlide(); // Move to the next slide after resetting
-        }, 50);
-    } else {
-        currentIndex = index;
-        const offset = -currentIndex * 100;
-        carouselInner.style.transform = `translateX(${offset}%)`;
+    function showSlide(index) {
+        const carouselInner = document.querySelector('.carousel-inner');
+        if (index >= totalSlides) {
+            carouselInner.style.transition = 'none';
+            currentIndex = 0;
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+            setTimeout(() => {
+                carouselInner.style.transition = 'transform 0.5s ease';
+                nextSlide();
+            }, 50);
+        } else {
+            currentIndex = index;
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
+        }
     }
-}
 
-function nextSlide() {
-    showSlide(currentIndex + 1);
-}
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
 
-function prevSlide() {
-    showSlide(currentIndex - 1);
-}
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
 
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentIndex);
-    setInterval(nextSlide, 5000);
-});
-
-
-
+    document.addEventListener('DOMContentLoaded', () => {
+        showSlide(currentIndex);
+        setInterval(nextSlide, 5000);
+    });
 
 
 <script type="application/ld+json">
@@ -490,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
   "url": "https://www.mweabrethrenschools.co.ke/",
   "sameAs": [
     "https://www.facebook.com/mweabrethrenschools",
-    "https://www.youtube.com/@MweaBrethrenSchools"
+    "https://www.youtube.com/@MweaBrethrenSchools",
     "https://www.instagram.com/mwea_brethrenschools/"    
   ]
 }
